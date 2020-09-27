@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, p, a{
+    margin: 0;
+}
+
+.left-col {
+    background-color: #e30611;
+    width: 250px;
+    height: 700px;
+    float: left;
+}
+
+.wrapper-buttons-left-col{
+    margin-top: 53px;
+}
+
+.wrapper-button-left-col{
+    width: 250px;
+}
+
+.button-left-col{
+    width: 200px;
+    padding: 20px 0 20px 50px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: inline-block;
+    transition: all 0.5s ease;
+}
+
+.button-left-col:hover {
+    background-color: #ab020a;
+}
+
+.img-left-col {
+    width: 250px;
+}
+
+.footer-left-col{
+    color: white;
+    font-size: 11px;
+    text-align: center;
+}
+
+.main {
+    background-color: cadetblue;
+    width: 1349px;
+    height: 700px;
+}
+
+.main-container {
+    width: 800px;
+    height: 700px;
+    margin-left: 300px;
+    background-color: white;
+}
+
+.search {
+    width: 800px;
+    height: 30px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.top-chart{
+    margin-top: 100px;
+}
+
+.track-top-chart{
+    margin-top: 20px;
+}
+
+.img-top-chart{
+    width: 40px;
+    height: 40px;
+}
+
+.info-track-top-chart{
+    display: inline-block;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 20px 0;
+    width: 150px;
+    background-color: #e30611;
+    display: block;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    transition: all 0.5s ease;
+
+}
+
+.btn:hover {
+    background-color: #ab020a;
+}
