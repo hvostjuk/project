@@ -6,62 +6,193 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <div class="wrapper">
-        <div class="left-col">
-            <div class="wrapper-buttons-left-col">
-                <div class="wrapper-button-left-col"><a href="#" class="button-left-col">Подборки</a>
-                </div>
-                <div class="wrapper-button-left-col"><a href="#" class="button-left-col">Рекомендации</a>
-                </div>
-            </div>
-            <img src="img/img.jpg" class="img-left-col">
-            <div class="footer-left-col">
-                <p>Работает на технологии Яндекс.Музыки</p>
-            </div>
-        </div>
-        <div class="main">
-            <div class="main-container">
-                <input type="search" class="search" placeholder="Трек, исполнитель" >
-               <div class="top-chart">
-                   <h2 class="title-top-chart">Топ чарта</h2>
-                    <div class="track-top-chart">
-                        <img src="img/img.jpg" class="img-top-chart">
-                        <div class="info-track-top-chart">
-                            <p>
-                                Название трека
-                            </p>
-                            <p>
-                                Исполнитель трека
-                            </p>
+        <div class="wrapper">
+            <div class="left-col">
+                <div class="wrapper-buttons-left-col">
+                    <div class="wrapper-button-left-col">
+                        <a class="button-left-col" href="#">Подборки</a>
+                    </div>
+                    <div class="wrapper-button-left-col">
+                        <a class="button-left-col" href="#">Рекомендации</a>
+                    </div>
+                    <img src="img/img.jpg" class="left-col__img">
+                    <div class="left-col__track-info">
+                        <div class="left-col__track-name">
+                        Окей
                         </div>
-
-
+                        <div class="left-col__track-group">
+                        Тима Белорусских
+                        </div>
                     </div>
-                    <div class="track-top-chart">
-                        <img src="img/img.jpg" class="img-top-chart">
-                        <div class="info-track-top-chart">
-                            <p>
-                                Название трека
-                            </p>
-                            <p>
-                                Исполнитель трека
-                            </p>
                     </div>
-                    <div class="track-top-chart">
-                        <img src="img/img.jpg" class="img-top-chart">
-                        <div class="info-track-top-chart">
-                            <p>
-                                Название трека
-                            </p>
-                            <p>
-                                Исполнитель трека
-                            </p>
+                    <div class="left-col__player-buttons">
+                        <img src="img/last.png" class="left-col__player-last">
+                        <img src="img/play.png" class="left-col__player-play">
+                        <img src="img/next.png" class="left-col__player-next">
 
                     </div>
-               </div>
+                    <div class="left-col__footer">
+                        <p class="left-col-footer__text">
+                        Работате на технологи ЯндексюМузыки
+                        </p>
+                    </div>
             </div>
-            <a href="#" class="btn">Все 16 треков</a>
-        </div>
-    </div>
+
+            <div class="main-col">
+                <div class="main-container">
+                    <input type="search" class="search" placeholder="Трек, исполнитель">
+                    <div class="top-chart">
+                        <h2 class="top-chart__title">Топ чарта</h2>
+                            <div class="top-chart-track__info">
+                                <img src="img/img.jpg" class="top-chart-track__img">
+                                <div class="top-chart-track__text">
+                                    <p class="top-chart-track__name">Название трека</p>
+                                    <p class="top-chart-track__group">Название группы</p>
+                                </div>
+                            </div>
+                            <div class="top-chart-track__info">
+                            <img src="img/img.jpg" class="top-chart-track__img">
+                            <div class="top-chart-track__text">
+                                <p class="top-chart-track__name">Название трека</p>
+                                <p class="top-chart-track__group">Название группы</p>
+                            </div>
+                            </div>
+                            <div class="top-chart-track__info">
+                            <img src="img/img.jpg" class="top-chart-track__img">
+                            <div class="top-chart-track__text">
+                                <p class="top-chart-track__name">Название трека</p>
+                                <p class="top-chart-track__group">Название группы</p>
+                            </div>
+                            </div>
+                        <div class="top-chart-button__wrapper">
+                            <a href="#" class="top-chart__button">Все 16 треков</a>
+                        </div>
+                    </div>
+                    <div class="main-nav__wrapper">
+                        <ul class="main__nav">
+                            <li class="main-nav__list">
+                                <a href="#" class="main-nav__button">Под настроение</a>
+                            </li>
+                            <li class="main-nav__list">
+                                <a href="#" class="main-nav__button">Для разных занятий</a>
+                            </li>
+                            <li class="main-nav__list">
+                                <a href="#" class="main-nav__button">Музыка из фильмов и сериалов</a>
+                            </li>
+                            <li class="main-nav__list">
+                                <a href="#" class="main-nav__button">По эпохам</a>
+                            </li>
+                            <li class="main-nav__list">
+                                <a href="#" class="main-nav__button">К празднику</a>
+                            </li>
+                            <li class="main-nav__list">
+                                <a href="#" class="main-nav__more">Еще</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="main-rows__wrapper">
+                        <div class="main__row">
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main__row">
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main__row">
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                            <div class="main-row__playlist">
+                                <img  src="img/img.jpg" class="main-row-playlist__img">
+                                <div class="main-row-playlist__info">
+                                    <p class="main-row-playlist__name">Название плейлиста</p>
+                                    <p class="main-row-playlist__sum">Количество треков</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-container__footer">
+                        <div class="main-container-footer__about">
+                            <a href="#">О сервисе</a>
+                            <a href="#">Соглашение о конфиденциальности</a>
+                            <a href="#">Пользовательское соглашение</a>
+                        </div>
+                        <div class="download-buttons__wrapper">
+                            <a href="#"><img src="img/playmarket.png" class="download-buttons__img"></a>
+                            <a href="#"><img src="img/appstore.png" class="download-buttons__img"></a>
+                        </div>
+                    </div>
+            </div>
 </body>
 </html>
