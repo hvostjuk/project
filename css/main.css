@@ -102,7 +102,6 @@ h1, h2, h3, h4, a, div, p {
     margin-left: 60px;
     width: 800px;
     height: 100%;
-    background-color: yellow;
 }
 
 .search {
@@ -160,14 +159,21 @@ h1, h2, h3, h4, a, div, p {
     padding: 15px 0;
     text-decoration: none;
     color: white;
+    transition: all 0.5s ease;
+}
+
+.top-chart__button:hover{
+    background-color: darkred;
 }
 
 .main-nav__wrapper {
     display: flex;
+    height: 50px;
+    border-bottom: 1px solid darkgray;
 }
 
 .main__nav {
-    margin-top: 30px;
+    margin-top: 20px;
     list-style: none;
     display: flex;
     padding: 0;
@@ -175,6 +181,10 @@ h1, h2, h3, h4, a, div, p {
 
 .main-nav__list {
     padding: 10px;
+}
+
+.main-nav__list:active {
+    border: 1px solid red;
 }
 
 .main-nav__button {
@@ -203,12 +213,18 @@ h1, h2, h3, h4, a, div, p {
 }
 
 .main-row__playlist {
+    transition: all 0.3s ease;
+}
 
+.main-row__playlist:hover {
+    border: 2px solid red;
+    cursor: pointer;
 }
 
 .main-row-playlist__img {
     width: 150px;
     height: 150px;
+    border: 1px solid darkgray;
 }
 
 main-row-playlist__info {
