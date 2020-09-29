@@ -11,11 +11,13 @@ h1, h2, h3, h4, a, div, p {
 
 .wrapper {
     display: flex;
+
 }
 
 .left-col {
     background-color: red;
     width: 300px;
+    position: fixed;
 }
 
 .wrapper-buttons-left-col {
@@ -85,7 +87,7 @@ h1, h2, h3, h4, a, div, p {
 }
 
 .left-col__footer {
-    margin-top: 780px;
+    margin-top: 80px;
     font-size: 10px;
 }
 
@@ -96,6 +98,7 @@ h1, h2, h3, h4, a, div, p {
 .main-col {
     width: 100%;
     background-color: white;
+    margin-left: 300px;
 }
 
 .main-container {
@@ -213,12 +216,38 @@ h1, h2, h3, h4, a, div, p {
 }
 
 .main-row__playlist {
-    transition: all 0.3s ease;
+    transition: all 0.1s ease;
+    position: relative;
 }
 
 .main-row__playlist:hover {
-    border: 2px solid red;
+    border: 1px solid red;
     cursor: pointer;
+
+}
+
+.main-row__playlist .play__btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: red;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
+.main-row__playlist:hover .play__btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50px;
+    left: 50px;
 }
 
 .main-row-playlist__img {
@@ -227,7 +256,7 @@ h1, h2, h3, h4, a, div, p {
     border: 1px solid darkgray;
 }
 
-main-row-playlist__info {
+.main-row-playlist__info {
 
 }
 
@@ -248,7 +277,9 @@ main-row-playlist__info {
 }
 
 .main-container-footer__about {
-
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .main-container-footer__about a{
@@ -266,5 +297,9 @@ main-row-playlist__info {
 .download-buttons__img {
     width: 160px;
     height: 50px;
+}
 
+.play {
+    width: 20px;
+    height: 20px;
 }
