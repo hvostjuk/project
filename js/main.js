@@ -11,29 +11,40 @@ let musicBD = [
     {   song: 'aud/Даня Милохин & Николай Басков - Дико Тусим.mp3', poster: 'img/img9.jpg'}
     ];
 let audio = new Audio('aud/DaBro - На Крыше.mp3');
-let playAudio = function () {
-    let btnPlay = document.querySelector('.left-col__player-play');
-    let count = 0;
-    btnPlay.addEventListener('click',(e) => {
-        if (count === 0) {
-            btnPlay.src = 'img/last.png'; //меняю кнопку на pause, но у меня ее нету пока, добавлю потом ;]
-            count ++;
-            audio.play();
-        } else if (count === 1) {
-            btnPlay.src = 'img/play.png';
-            count --;
-            audio.pause();
-        }
-    });
-};
-playAudio();
-
 let btnNext = document.querySelector('.left-col__player-next');
+let btnPlay = document.querySelector('.left-col__player-play');
+let btnLast = document.querySelector('.left-col__player-last');
+let trackNumber = 0;
+let playMusic = function () {
+    audio.play();
+};
+let pauseMusic = function () {
+    audio.pause();
+};
 let count = 0;
-btnNext.addEventListener('click', (e) => {
-     count ++;
-     console.log(count);
-     audio = new Audio(musicBD[count].song);
-     audio.play();
 
+btnPlay.addEventListener('click',(e) => {
+    count ++;
+    if (count % 2 != 0) {
+        btnPlay.src = 'img/last.png';
+        playMusic();
+    } else {
+        btnPlay.src = 'img/play.png';
+        pauseMusic();
+    }
+});
+btnNext.addEventListener('click', (e) => {
+    pauseMusic();
+    trackNumber ++;
+    audio = new Audio(musicBD[trackNumber].song);
+    console.log(audio);
+    console.log(trackNumber);
+});
+
+btnLast.addEventListener('click', (e) => {
+    pauseMusic();
+    trackNumber --;
+    audio = new Audio(musicBD[trackNumber].song);
+    console.log(audio);
+    console.log(trackNumber);
 });
