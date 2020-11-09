@@ -24,26 +24,25 @@ let playMusic = function () {
 let pauseMusic = function () {
     audio.pause();
 };
+let changeBtnPlayMusic = function () {
+    btnPlay.src = 'img/play.png'
+};
 let count = 0;
 
 btnPlay.addEventListener('click',(e) => {
-    count ++;
-    if (count % 2 != 0) {
-        btnPlay.src = 'img/last.png';
-        playMusic();
-    } else {
-        btnPlay.src = 'img/play.png';
-        pauseMusic();
-    }
+    btnPlay.src = 'img/last.png';
+    playMusic();
 });
 btnNext.addEventListener('click', (e) => {
     if (truckNumber >= 8) {
+        changeBtnPlayMusic();
         pauseMusic();
         audio = new Audio(musicBD[8].song);
         poster.src = musicBD[8].poster;
         truckName.textContent = musicBD[8].truckName;
         truckArtist.textContent = musicBD[8].group;
     } else {
+        changeBtnPlayMusic();
         pauseMusic();
         truckNumber ++;
         audio = new Audio(musicBD[truckNumber].song);
@@ -51,16 +50,17 @@ btnNext.addEventListener('click', (e) => {
         truckName.textContent = musicBD[truckNumber].truckName;
         truckArtist.textContent = musicBD[truckNumber].group;
     }
-        console.log(truckNumber);
 });
 btnLast.addEventListener('click', (e) => {
     if (truckNumber <= 0) {
+        changeBtnPlayMusic();
         pauseMusic();
         audio = new Audio(musicBD[0].song);
         poster.src = musicBD[0].poster;
         truckName.textContent = musicBD[0].truckName;
         truckArtist.textContent = musicBD[0].group;
     } else {
+        changeBtnPlayMusic();
         pauseMusic();
         truckNumber --;
         audio = new Audio(musicBD[truckNumber].song);
@@ -69,12 +69,5 @@ btnLast.addEventListener('click', (e) => {
         truckArtist.textContent = musicBD[truckNumber].group;
     }
     console.log(truckNumber);
-        // pauseMusic();
-        // truckNumber --;
-        // audio = new Audio(musicBD[truckNumber].song);
-        // poster.src = musicBD[truckNumber].poster;
-        // truckName.textContent = musicBD[truckNumber].truckName;
-        // truckArtist.textContent = musicBD[truckNumber].group;
-        // console.log(truckNumber);
-
 });
+
