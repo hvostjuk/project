@@ -30,8 +30,15 @@ let changeBtnPlayMusic = function () {
 let count = 0;
 
 btnPlay.addEventListener('click',(e) => {
-    btnPlay.src = 'img/last.png';
-    playMusic();
+    count++
+    if (count % 2 == 0) {
+        btnPlay.src = 'img/last.png';
+        playMusic();
+    } else {
+      btnPlay.src = 'img/play.png';
+      pauseMusic();
+    };
+
 });
 btnNext.addEventListener('click', (e) => {
     if (truckNumber >= musicBD.length - 1) {
