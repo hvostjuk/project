@@ -34,13 +34,13 @@ btnPlay.addEventListener('click',(e) => {
     playMusic();
 });
 btnNext.addEventListener('click', (e) => {
-    if (truckNumber >= 8) {
+    if (truckNumber >= musicBD.length - 1) {
         changeBtnPlayMusic();
         pauseMusic();
-        audio = new Audio(musicBD[8].song);
-        poster.src = musicBD[8].poster;
-        truckName.textContent = musicBD[8].truckName;
-        truckArtist.textContent = musicBD[8].group;
+        audio = new Audio(musicBD[musicBD.length - 1].song);
+        poster.src = musicBD[musicBD.length - 1].poster;
+        truckName.textContent = musicBD[musicBD.length - 1].truckName;
+        truckArtist.textContent = musicBD[musicBD.length - 1].group;
     } else {
         changeBtnPlayMusic();
         pauseMusic();
