@@ -22,7 +22,7 @@ let playMusic = () => audio.play();
 
 let pauseMusic  =  () => audio.pause();
 
-let changeBtnPlayMusic = () => btnPlay.src = btnPlay.src = 'img/last.png';
+let changeBtnPlayMusic = () => btnPlay.src = btnPlay.src = 'img/pause.png';
 
 let changeToNextTruck = () => {
     audio.src = musicBD[truckNumber].song;
