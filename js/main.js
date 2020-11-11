@@ -8,67 +8,105 @@ const musicBD = [
     { song: 'aud/Артур Бабич - Мармеладка.mp3', poster: 'img/img7.jpg', truckName: 'Мармеладка', group: 'Артур Бабич'}, { song: 'aud/Асия - Мона Лиза.mp3', poster: 'img/img8.jpg', truckName: 'Мона Лиза', group: 'Асия'},
     { song: 'aud/Даня Милохин & Николай Басков - Дико Тусим.mp3', poster: 'img/img9.jpg', truckName: 'Дико Тусим', group: 'Даня Милохин & Николай Басков'}
 ];
-const audio = new Audio(musicBD[0].song);
+let truckNumber = 0;
+const audio = new Audio(musicBD[truckNumber].song);
 const btnNext = document.getElementById('next');
 const btnPlay = document.getElementById('play');
 const btnLast = document.getElementById('last');
-const poster = document.getElementById('poster');
+const poster =  document.getElementById('poster');
 const truckName = document.getElementById('track_name');
 const truckArtist = document.getElementById('track_group');
-let truckNumber = 0; // Не смог понять почему надо писать переменную в верхнем регистре(она у меня не константа)
-let count = 0;
+const timeMusicElement = document.getElementById('all-time');
+const timeMusicCurrent = document.getElementById('current-time');
+const progressMusic = document.getElementById('progress');
+let currentTime;
+let startMusic;
+let timeMusicSec;
+let timeMusicMinute;
+const timerMusicStart = function () {
+  startMusic = Date.now();
+};
 
-let playMusic = () => audio.play();
+ыconst getCurrentTime = function () {
+    let interval = setInterval(function (){
+        let timerEnd = Date.now();
+        currentTime = Math.round((timerEnd - startMusic) / 1000);
+        if (currentTime < 10) {
+            timeMusicCurrent.textContent =`0.0${currentTime}`;
+        } else if(currentTime < 60) {
+            timeMusicCurrent.textContent =`0.${currentTime}`;
+        } else if (currentTime === 60) {
+            timeMusicCurrent.textContent = '1.00'
+        } else {
+            let currentTimeMinutes = Math.round(currentTime / 60);
+            let currentTimeSec = currentTime % 60;
+            timeMusicCurrent.textContent = `${currentTimeMinutes}.0${currentTimeSec}`
+        }
+        }, 1000);
+};
 
-let pauseMusic  =  () => audio.pause();
-
-let changeBtnPlayMusic = () => btnPlay.src = btnPlay.src = 'img/pause.png';
-
-let changeToNextTruck = () => {
+let playMusic = () => {
+    audio.play();
+    if (audio.play) {
+        btnPlay.src = 'img/pause.png';
+        musicProgress(timeMusicSec);
+        timerMusicStart();
+    } else {
+        btnPlay.src = 'img/play.png';
+    }
+};
+audio.onloadeddata = () => {
+    timeMusicSec = audio.duration;
+    getTimeMinute();
+    timeMusicElement.textContent = timeMusicMinute;
+};
+const getTimeMinute = () => {
+  timeMusicMinute = Math.floor((timeMusicSec * 100) / 60) / 100;
+};
+const changeToNextTruck = () => {
     audio.src = musicBD[truckNumber].song;
     poster.src = musicBD[truckNumber].poster;
     truckName.textContent = musicBD[truckNumber].truckName;
     truckArtist.textContent = musicBD[truckNumber].group;
 }; // Правильно ли так делать, чтобы сократить код?
+const musicProgress = function (time) {
+    let start = 0;
+    let t = Math.round(time * 1000 / 100);
+        let intervalId = setInterval(function (){
+        if (start >= 100) {
+            clearInterval(intervalId);
+        } else {
+            progressMusic.value = start;
+        }
+        start++;
+    },t);
+};
 
 btnPlay.addEventListener('click',(e) => {
-    count++
-    if (count % 2 == 0) {
-        changeBtnPlayMusic();
+    if (audio.paused){
         playMusic();
     } else {
         btnPlay.src = 'img/play.png';
-        pauseMusic();
-    };
+        audio.pause();
+    }
 });
-
 btnNext.addEventListener('click', (e) => {
     if (truckNumber >= musicBD.length - 1) {
-        audio.src = musicBD[musicBD.length - 1].song;
-        poster.src = musicBD[musicBD.length - 1].poster;
-        truckName.textContent = musicBD[musicBD.length - 1].truckName;
-        truckArtist.textContent = musicBD[musicBD.length - 1].group;
+        truckNumber = 0;
+        changeToNextTruck();
         } else {
         truckNumber++;
         changeToNextTruck();
     }
     playMusic();
-    changeBtnPlayMusic();
 });
-
 btnLast.addEventListener('click', (e) => {
     if (truckNumber <= 0) {
-        audio.src = musicBD[0].song;
-        poster.src = musicBD[0].poster;
-        truckName.textContent = musicBD[0].truckName;
-        truckArtist.textContent = musicBD[0].group;
+        truckNumber = musicBD.length - 1;
+        changeToNextTruck();
     } else {
         truckNumber --;
         changeToNextTruck();
     }
     playMusic();
-    changeBtnPlayMusic();
 });
-
-
-
