@@ -44,10 +44,8 @@ btnPlay.addEventListener('click',(e) => {
 
 btnNext.addEventListener('click', (e) => {
     if (truckNumber >= musicBD.length - 1) {
-        audio.src = musicBD[musicBD.length - 1].song;
-        poster.src = musicBD[musicBD.length - 1].poster;
-        truckName.textContent = musicBD[musicBD.length - 1].truckName;
-        truckArtist.textContent = musicBD[musicBD.length - 1].group;
+        truckNumber = 0;
+        changeToNextTruck();
         } else {
         truckNumber++;
         changeToNextTruck();
@@ -58,10 +56,8 @@ btnNext.addEventListener('click', (e) => {
 
 btnLast.addEventListener('click', (e) => {
     if (truckNumber <= 0) {
-        audio.src = musicBD[0].song;
-        poster.src = musicBD[0].poster;
-        truckName.textContent = musicBD[0].truckName;
-        truckArtist.textContent = musicBD[0].group;
+        truckNumber = musicBD.length - 1;
+        changeToNextTruck();
     } else {
         truckNumber --;
         changeToNextTruck();
