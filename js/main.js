@@ -22,7 +22,7 @@ let playMusic = () => audio.play();
 
 let pauseMusic  =  () => audio.pause();
 
-let changeBtnPlayMusic = () => btnPlay.src = 'img/play.png';
+let changeBtnPlayMusic = () => btnPlay.src = btnPlay.src = 'img/last.png';
 
 let changeToNextTruck = () => {
     audio.src = musicBD[truckNumber].song;
@@ -34,10 +34,10 @@ let changeToNextTruck = () => {
 btnPlay.addEventListener('click',(e) => {
     count++
     if (count % 2 == 0) {
-        btnPlay.src = 'img/last.png';
+        changeBtnPlayMusic();
         playMusic();
     } else {
-        changeBtnPlayMusic();
+        btnPlay.src = 'img/play.png';
         pauseMusic();
     };
 });
@@ -53,6 +53,7 @@ btnNext.addEventListener('click', (e) => {
         changeToNextTruck();
     }
     playMusic();
+    changeBtnPlayMusic();
 });
 
 btnLast.addEventListener('click', (e) => {
@@ -66,6 +67,7 @@ btnLast.addEventListener('click', (e) => {
         changeToNextTruck();
     }
     playMusic();
+    changeBtnPlayMusic();
 });
 
 
