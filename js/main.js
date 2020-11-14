@@ -19,41 +19,36 @@ const truckArtist = document.getElementById('track_group');
 const timeMusicElement = document.getElementById('all-time');
 const timeMusicCurrent = document.getElementById('current-time');
 const progressMusic = document.getElementById('progress');
+let bool = false;
 let currentTime;
 let startMusic;
 let timeMusicSec;
 let timeMusicMinute;
+const changeToNextTruck = () => {
+    audio.src = musicBD[truckNumber].song;
+    poster.src = musicBD[truckNumber].poster;
+    truckName.textContent = musicBD[truckNumber].truckName;
+    truckArtist.textContent = musicBD[truckNumber].group;
+}; // Правильно ли так делать, чтобы сократить код?
 const timerMusicStart = function () {
   startMusic = Date.now();
 };
-
-ыconst getCurrentTime = function () {
+const getCurrentTime = function (bool) {
     let interval = setInterval(function (){
         let timerEnd = Date.now();
         currentTime = Math.round((timerEnd - startMusic) / 1000);
-        if (currentTime < 10) {
-            timeMusicCurrent.textContent =`0.0${currentTime}`;
-        } else if(currentTime < 60) {
-            timeMusicCurrent.textContent =`0.${currentTime}`;
-        } else if (currentTime === 60) {
-            timeMusicCurrent.textContent = '1.00'
-        } else {
-            let currentTimeMinutes = Math.round(currentTime / 60);
-            let currentTimeSec = currentTime % 60;
-            timeMusicCurrent.textContent = `${currentTimeMinutes}.0${currentTimeSec}`
-        }
+            if (currentTime < 10) {
+                timeMusicCurrent.textContent = `0.0${currentTime}`;
+            } else if (currentTime < 60) {
+                timeMusicCurrent.textContent = `0.${currentTime}`;
+            } else if (currentTime === 60) {
+                timeMusicCurrent.textContent = '1.00'
+            } else {
+                let currentTimeMinutes = Math.round(currentTime / 60);
+                let currentTimeSec = currentTime % 60;
+                timeMusicCurrent.textContent = `${currentTimeMinutes}.0${currentTimeSec}`
+            }
         }, 1000);
-};
-
-let playMusic = () => {
-    audio.play();
-    if (audio.play) {
-        btnPlay.src = 'img/pause.png';
-        musicProgress(timeMusicSec);
-        timerMusicStart();
-    } else {
-        btnPlay.src = 'img/play.png';
-    }
 };
 audio.onloadeddata = () => {
     timeMusicSec = audio.duration;
@@ -63,12 +58,6 @@ audio.onloadeddata = () => {
 const getTimeMinute = () => {
   timeMusicMinute = Math.floor((timeMusicSec * 100) / 60) / 100;
 };
-const changeToNextTruck = () => {
-    audio.src = musicBD[truckNumber].song;
-    poster.src = musicBD[truckNumber].poster;
-    truckName.textContent = musicBD[truckNumber].truckName;
-    truckArtist.textContent = musicBD[truckNumber].group;
-}; // Правильно ли так делать, чтобы сократить код?
 const musicProgress = function (time) {
     let start = 0;
     let t = Math.round(time * 1000 / 100);
@@ -81,9 +70,15 @@ const musicProgress = function (time) {
         start++;
     },t);
 };
-
+let playMusic = () => {
+    audio.play();
+    btnPlay.src = 'img/pause.png';
+    timerMusicStart();
+    getCurrentTime();
+    musicProgress(timeMusicSec);
+};
 btnPlay.addEventListener('click',(e) => {
-    if (audio.paused){
+    if (audio.paused) {
         playMusic();
     } else {
         btnPlay.src = 'img/play.png';
