@@ -19,7 +19,6 @@ const truckArtist = document.getElementById('track_group');
 const timeMusicElement = document.getElementById('all-time');
 const timeMusicCurrent = document.getElementById('current-time');
 const progressMusic = document.getElementById('progress');
-let bool = false;
 let currentTime;
 let startMusic;
 let timeMusicSec;
@@ -33,11 +32,13 @@ const changeToNextTruck = () => {
 const timerMusicStart = function () {
   startMusic = Date.now();
 };
-const getCurrentTime = function (bool) {
+const getCurrentTime = function () {
     let interval = setInterval(function (){
         let timerEnd = Date.now();
         currentTime = Math.round((timerEnd - startMusic) / 1000);
-            if (currentTime < 10) {
+            if (audio.paused) {
+                clearInterval(interval);
+            } else if (currentTime < 10) {
                 timeMusicCurrent.textContent = `0.0${currentTime}`;
             } else if (currentTime < 60) {
                 timeMusicCurrent.textContent = `0.${currentTime}`;
@@ -62,21 +63,26 @@ const musicProgress = function (time) {
     let start = 0;
     let t = Math.round(time * 1000 / 100);
         let intervalId = setInterval(function (){
-        if (start >= 100) {
+        if (start >= 100 || audio.paused) {
+            progressMusic.value = start;
+
             clearInterval(intervalId);
+            console.log(start);
         } else {
             progressMusic.value = start;
         }
         start++;
     },t);
 };
+
 let playMusic = () => {
     audio.play();
     btnPlay.src = 'img/pause.png';
+    musicProgress(timeMusicSec);
     timerMusicStart();
     getCurrentTime();
-    musicProgress(timeMusicSec);
 };
+
 btnPlay.addEventListener('click',(e) => {
     if (audio.paused) {
         playMusic();
@@ -85,6 +91,7 @@ btnPlay.addEventListener('click',(e) => {
         audio.pause();
     }
 });
+
 btnNext.addEventListener('click', (e) => {
     if (truckNumber >= musicBD.length - 1) {
         truckNumber = 0;
@@ -95,6 +102,7 @@ btnNext.addEventListener('click', (e) => {
     }
     playMusic();
 });
+
 btnLast.addEventListener('click', (e) => {
     if (truckNumber <= 0) {
         truckNumber = musicBD.length - 1;
