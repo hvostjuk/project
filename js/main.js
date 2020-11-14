@@ -65,9 +65,7 @@ const musicProgress = function (time) {
         let intervalId = setInterval(function (){
         if (start >= 100 || audio.paused) {
             progressMusic.value = start;
-
             clearInterval(intervalId);
-            console.log(start);
         } else {
             progressMusic.value = start;
         }
